@@ -20,3 +20,17 @@ $router->get('/', function () use ($router) {
 $router->get('/health', function () {
     return response()->json(['status' => 'ok']);
 });
+
+$router->get('/health', function () {
+    return response()->json(['status' => 'ok']);
+});
+
+$router->group(['prefix' => 'produtos'], function () use ($router) {
+    // Rota para listar todos os produtos
+    // GET /produtos
+    $router->get('/', 'ProdutoController@index');
+
+    // Rota para criar um novo produto
+    // POST /produtos
+    $router->post('/', 'ProdutoController@store');
+});
