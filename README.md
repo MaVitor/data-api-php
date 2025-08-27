@@ -1,26 +1,44 @@
-# Lumen PHP Framework
+# Data API Service (PHP/Lumen)
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/lumen-framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/lumen-framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/lumen)](https://packagist.org/packages/laravel/lumen-framework)
+Este é o microsserviço de API de dados, construído com o micro-framework PHP Lumen. Sua única responsabilidade é gerenciar a comunicação com o banco de dados PostgreSQL, servindo como a fonte central da verdade para os dados de produtos e contatos.
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+Este serviço faz parte de uma arquitetura maior de monitoramento de preços.
 
-> **Note:** In the years since releasing Lumen, PHP has made a variety of wonderful performance improvements. For this reason, along with the availability of [Laravel Octane](https://laravel.com/docs/octane), we no longer recommend that you begin new projects with Lumen. Instead, we recommend always beginning new projects with [Laravel](https://laravel.com).
+## Tecnologias Utilizadas
 
-## Official Documentation
+- **Linguagem:** PHP 8.2
+- **Framework:** Lumen
+- **Banco de Dados:** PostgreSQL
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+## Como Executar (Com Docker Compose)
 
-## Contributing
+Este serviço não foi projetado para ser executado de forma isolada. Ele é orquestrado pelo Docker Compose a partir do repositório principal da plataforma.
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1.  **Clone o repositório principal:**
+    ```bash
+    git clone [https://github.com/MaVitor/price-alert-platform.git](https://github.com/MaVitor/price-alert-platform.git)
+    cd price-alert-platform
+    ```
 
-## Security Vulnerabilities
+2.  **Suba o ambiente:**
+    O `docker-compose.yml` no diretório raiz cuidará de construir a imagem deste serviço e iniciá-lo junto com os outros.
+    ```bash
+    docker-compose up
+    ```
+    A API estará disponível na porta `8000` do seu host.
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+## API Endpoints
 
-## License
+A API gerencia as entidades `Produto` e `Contato` com operações CRUD completas.
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- `GET /produtos`
+- `POST /produtos`
+- `GET /produtos/{id}`
+- `PUT /produtos/{id}`
+- `DELETE /produtos/{id}`
+
+- `GET /contatos`
+- `POST /contatos`
+- `GET /contatos/{id}`
+- `PUT /contatos/{id}`
+- `DELETE /contatos/{id}`
