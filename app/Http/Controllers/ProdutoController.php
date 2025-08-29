@@ -12,9 +12,23 @@ class ProdutoController extends Controller
      * Rota: GET /produtos
      */
     public function index()
-    {
-        return Produto::all();
-    }
+        {
+            try {
+                // A consulta original está correta, mas agora está protegida.
+                $produtos = Produto::with('contato')->get();
+                
+                // Se a consulta for bem-sucedida, retorna os produtos.
+                return response()->json($produtos);
+
+            } catch (\Exception $e) {
+                // Se qualquer erro acontecer (ex: conexão com o DB, relação incorreta),
+                // ele será capturado aqui.
+                return response()->json([
+                    'error' => 'Ocorreu um erro interno no servidor da API.',
+                    'message' => $e->getMessage() // Esta é a mensagem de erro real!
+                ], 500);
+            }
+        }
 
     /**
      * Cria um novo produto no banco de dados.
