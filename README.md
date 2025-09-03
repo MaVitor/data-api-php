@@ -16,7 +16,7 @@ Este serviço não foi projetado para ser executado de forma isolada. Ele é orq
 
 1.  **Clone o repositório principal:**
     ```bash
-    git clone [https://github.com/MaVitor/price-alert-platform.git](https://github.com/MaVitor/price-alert-platform.git)
+    git clone https://github.com/MaVitor/price-alert-platform.git
     cd price-alert-platform
     ```
 
